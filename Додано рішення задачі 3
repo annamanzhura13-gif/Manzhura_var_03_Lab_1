@@ -1,0 +1,28 @@
+import math
+
+def calculate_lateral_surface_area(V: float, h: float) -> float:
+    """
+    Знаходить площу бічної поверхні правильної чотирикутної піраміди.
+    Параметри: V (float): Об'єм піраміди. h (float): Висота піраміди.
+    Повертає: float: Площа бічної поверхні, округлена до трьох знаків після коми.
+    """
+    if V <= 0 or h <= 0:
+        raise ValueError("Об'єм (V) та висота (h) повинні бути додатними числами.")
+
+    a_squared = (3 * V) / h
+    a = math.sqrt(a_squared)
+    r_squared = a_squared / 4
+    l_squared = h**2 + r_squared
+    l = math.sqrt(l_squared)
+    s_lateral = 2 * a * l
+
+    return round(s_lateral, 3)
+
+# Приклад використання
+V_example = 10.0
+h_example = 3.0
+try:
+    result = calculate_lateral_surface_area(V_example, h_example)
+    print(f"Площа бічної поверхні (V={V_example}, h={h_example}): {result}")
+except ValueError as e:
+    print(f"Помилка: {e}") 
